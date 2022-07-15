@@ -1,0 +1,48 @@
+<!DOCTPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<header>
+		<nav>
+			<div class="logo"><h1 class="animated infinite heartbeat"> News Detection </h1></div>
+			<div class="menu">
+			<a href="https://www.hindustantimes.com/">Home</a>
+			<a href="https://www.google.com/search?q=latast+news&tbm=isch&ved=2ahUKEwjm0ob4gZP3AhXi0qACHbI9B1EQ2-cCegQIABAA&oq=latast+news&gs_lcp=CgNpbWcQAzIFCAAQgAQyBggAEAoQGDIGCAAQChAYMgYIABAKEBgyBggAEAoQGDIGCAAQChAYMgYIABAKEBgyBggAEAoQGDoHCCMQ7wMQJzoECAAQQzoLCAAQgAQQsQMQgwE6CAgAEIAEELEDOgcIABCxAxBDOgcIABCABBAKUABYwBtglx1oAXAAeACAAcQBiAGOD5IBBDAuMTKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=HMtXYubUNuKlg8UPsvuciAU&bih=722&biw=1536&rlz=1C1CHBF_enIN921IN921">Gallery</a>
+			<a href="https://www.htmedia.in/about-us">about us</a>
+			<a href="https://www.htmedia.in/contact-us">contact us</a>
+			</div>
+			</nav>
+			</header>
+</head>
+<body>	
+	<main>
+		<div class="login">
+	<h1>Welcome to News Detection Web</h1><br>
+	<h1>Check the news 📰</h1><br><br>
+    <form action="{{ url_for('predict')}}" method="POST">
+		<section>
+    	<textarea name="message" rows="4" cols="30" required="required" style="font-size: 25pt"	></textarea>
+		<br><br>
+        <button style="height:50px;width: 150px;" type="submit" class="btnone">Predict</button><br><br>
+		</section>
+
+
+        	<div class="results">
+
+	{% if prediction == ['FAKE']%}
+	<h2 style="color:rgb(242, 239, 239);">Looking Spam⚠️News📰 </h2>
+	{% elif prediction == ['REAL']%}
+				<h2 style="color:rgb(234, 226, 223);"><b>Looking Real News📰</b></h2>
+	{% endif %}
+
+	</div>
+
+    </form>
+
+</div>
+	</main>
+</body>
+</html>
